@@ -61,7 +61,7 @@ whois 192.168.142.130
 nmap -sP 192.168.142.0/24
 ```
  <p align="center">
-   <img src="src="https://github.com/user-attachments/assets/df545864-2861-4dcd-a5c5-62dd1f989aaa" />
+   <img src="src="https://github.com/ZeeshanKeyani/Real-world-penetration-testing-environment-in-a-safe-isolated-network./blob/main/img/4-nmap.JPG" />
     </p>
 * Collect IP, domain, and server info.
 * No interaction with target.
