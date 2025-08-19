@@ -1,16 +1,4 @@
 # 🛡️ A Detailed guide to setting up a safe and Real world penetration testing lab.
-Perfect! I’ve prepared a **full, extended, professional `.md` file** for a **real-world penetration testing lab**. It includes:
-
-* GitHub-style badges
-* Folder structure
-* Step-by-step commands with outputs
-* Screenshots placeholders
-* Tools, methodology, and reporting templates
-
-You can directly use this in your GitHub repo.
-
----
-
 ````markdown
 # 🛡️ Real-World Penetration Testing Lab
 
