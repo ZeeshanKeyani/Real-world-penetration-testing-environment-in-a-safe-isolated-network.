@@ -1,8 +1,4 @@
-Sure! Here's your **Penetration Testing Lab Guide** converted into a professional **GitHub Markdown (`.md`)** format:
-
-# 🛡️ Penetration Testing Lab - Step by Step
-
-A detailed guide to setting up a safe and practical penetration testing lab.
+# 🛡️ A detailed guide to setting up a safe and practical penetration testing lab.
 
 ---
 
@@ -29,7 +25,6 @@ A detailed guide to setting up a safe and practical penetration testing lab.
   - Metasploitable 2: `192.168.56.130`
   - Windows: `192.168.56.132`
 
----
 
 ## 2️⃣ Lab Setup
 
