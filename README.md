@@ -23,37 +23,6 @@ This lab provides a **safe, isolated, real-world environment** to practice penet
 - Simulate real-world penetration testing scenarios.  
 - Gain hands-on experience with scanning, enumeration, exploitation, and reporting.  
 
----
-
-## 🔹 Folder Structure
-
-```text
-penetration-testing-lab/
-├── 01-setup/
-│   ├── network-setup.md
-│   └── vm-config.md
-├── 02-reconnaissance/
-│   ├── passive-recon.md
-│   └── active-recon.md
-├── 03-enumeration/
-│   ├── ftp-enum.md
-│   └── smb-enum.md
-├── 04-vulnerability-analysis/
-│   └── searchsploit.md
-├── 05-exploitation/
-│   ├── metasploit-exploits.md
-│   └── shell-access.md
-├── 06-post-exploitation/
-│   └── privilege-escalation.md
-├── 07-reporting/
-│   └── report-template.md
-└── README.md
-````
-
-> This structure keeps the lab organized and makes it easier to follow.
-
----
-
 ## 🔹 Lab Setup
 
 ### 1. Requirements
@@ -70,6 +39,7 @@ penetration-testing-lab/
 
    * Attacker: 192.168.142.128
    * Target: 192.168.142.130
+  ![VM Network Setup](https://i.ibb.co/r5Syjxz/vm-network-topology.png)
 
 2. Verify connectivity:
 
