@@ -1,6 +1,5 @@
 Sure! Here's your **Penetration Testing Lab Guide** converted into a professional **GitHub Markdown (`.md`)** format:
 
-````markdown
 # 🛡️ Penetration Testing Lab - Step by Step
 
 A detailed guide to setting up a safe and practical penetration testing lab.
