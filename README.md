@@ -20,6 +20,7 @@
 - Use an **isolated virtual network** (NAT/Host-only) to avoid affecting your real network.
 - Assign static IPs:
   - Kali: `192.168.56.128`
+    
   - Metasploitable 2: `192.168.56.130`
   - Windows: `192.168.56.132`
 
