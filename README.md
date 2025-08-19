@@ -1,9 +1,5 @@
 # 🛡️ A Detailed guide to setting up a safe and practical Real world penetration testing lab.
 
-
-````markdown
-# 🛡️ Real-World Penetration Testing Lab
-
 <p align="center">
   <img src="https://img.shields.io/badge/Lab-Environment-blue?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Tools-Kali%20Linux-green?style=for-the-badge" />
