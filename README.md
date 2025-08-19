@@ -6,7 +6,6 @@
   <img src="https://img.shields.io/badge/Targets-Metasploitable%20%26%20Windows-red?style=for-the-badge" />
 </p>
 
----
 
 ## 🔹 Lab Overview
 
@@ -24,8 +23,6 @@ This guide is designed for **ethical hackers and cybersecurity enthusiasts** to 
 - Perform reconnaissance, scanning, enumeration, exploitation, and post-exploitation.
 - Practice both Linux and Windows target exploitation in a controlled environment.
 - Build a detailed report of findings.
-
----
 
 ## 🔹 Lab Setup
 
