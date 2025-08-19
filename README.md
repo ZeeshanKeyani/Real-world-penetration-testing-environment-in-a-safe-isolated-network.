@@ -49,13 +49,6 @@ ping 192.168.142.130
   <img src="https://github.com/ZeeshanKeyani/Real-world-penetration-testing-environment-in-a-safe-isolated-network./blob/main/img/3-metasploit.JPG" />
 </p>
 
-**Expected Output:**
-
-```
-64 bytes from 192.168.142.130: icmp_seq=1 ttl=64 time=0.123 ms
-```
-
----
 
 ## 🔹 Step-by-Step Penetration Testing
 
@@ -65,7 +58,8 @@ ping 192.168.142.130
 
 ```bash
 whois 192.168.142.130
-nslookup 192.168.142.130
+<img width="666" height="322" alt="image" src="https://github.com/user-attachments/assets/df545864-2861-4dcd-a5c5-62dd1f989aaa" />
+
 ```
 
 * Collect IP, domain, and server info.
