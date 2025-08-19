@@ -1,4 +1,4 @@
-# 🛡️ A Detailed guide to setting up a safe and practical Real world penetration testing lab.
+# 🛡️ A Detailed guide to setting up a safe and Real world penetration testing lab.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Lab-Environment-blue?style=for-the-badge" />
