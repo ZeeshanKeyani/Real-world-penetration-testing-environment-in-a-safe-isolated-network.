@@ -17,7 +17,7 @@ This guide is designed for **ethical hackers and cybersecurity enthusiasts** to 
 |-----------|-----------------|----------------|------------------------------|
 | Attacker  | Kali Linux       | 192.168.142.128 | Pentester machine            |
 | Target 1 | Metasploitable 2 | 192.168.142.130 | Vulnerable Linux machine     |
-| Target 2 | Windows 10/Server| 192.168.142.132 | Vulnerable Windows machine   |
+| Target 2 | Windows 10       | 192.168.142.132 | Vulnerable Windows machine   |
 
 **Objectives:**  
 - Perform reconnaissance, scanning, enumeration, exploitation, and post-exploitation.
