@@ -1,8 +1,5 @@
 # 🛡️ A Detailed guide to setting up a safe and practical Real world penetration testing lab.
 
-Absolutely! I can create a **detailed GitHub Markdown (`.md`) file** for a **Penetration Testing Lab**, step by step, including setup, commands, tools, and methodology. Here's a polished example you can directly use for your repository:
-
----
 
 ````markdown
 # 🛡️ Real-World Penetration Testing Lab
