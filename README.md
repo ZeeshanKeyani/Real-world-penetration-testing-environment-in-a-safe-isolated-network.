@@ -40,16 +40,14 @@ This lab provides a **safe, isolated, real-world environment** to practice penet
    * Attacker: 192.168.142.128
    * Target: 192.168.142.130
  
-  <p align="center">
-  <img src="https://github.com/ZeeshanKeyani/Real-world-penetration-testing-environment-in-a-safe-isolated-network./blob/main/img/3-metasploit.JPG" />
-</p>
-
-
 2. Verify connectivity:
 
 ```bash
 ping 192.168.142.130
 ```
+  <p align="center">
+  <img src="https://github.com/ZeeshanKeyani/Real-world-penetration-testing-environment-in-a-safe-isolated-network./blob/main/img/3-metasploit.JPG" />
+</p>
 
 **Expected Output:**
 
