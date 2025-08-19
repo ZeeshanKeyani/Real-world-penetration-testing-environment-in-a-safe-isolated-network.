@@ -1,4 +1,4 @@
-# 🛡️ A detailed guide to setting up a safe and practical penetration testing lab.
+# 🛡️ A Detailed guide to setting up a safe and practical Real world penetration testing lab.
 
 ## 1️⃣ Lab Requirements
 
